@@ -51,11 +51,11 @@ export function Header() {
           <Image
             src="/images/brand/clinic-logo.png"
             alt=""
-            width={32}
-            height={32}
+            width={42}
+            height={42}
             priority
             aria-hidden="true"
-            className="size-8 shrink-0 object-contain"
+            className="size-[42px] shrink-0 object-contain"
           />
           <span className="leading-none">
             <span className="block font-serif text-[1.15rem] font-semibold tracking-[-.03em] text-[#0b2e28] sm:text-[1.28rem]">
