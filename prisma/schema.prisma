@@ -1,0 +1,67 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum AppointmentStatus {
+  PENDING
+  CONFIRMED
+  RESCHEDULED
+  CANCELLED
+  COMPLETED
+}
+
+model Appointment {
+  id                String            @id @default(cuid())
+  reference         String            @unique
+  name              String
+  phone             String
+  email             String?
+  service           String
+  preferredDate     DateTime          @db.Date
+  preferredTime     String
+  message           String?
+  status            AppointmentStatus @default(PENDING)
+  confirmedDate     DateTime?         @db.Date
+  confirmedTime     String?
+  whatsappMessageId String?
+  createdAt         DateTime          @default(now())
+  updatedAt         DateTime          @updatedAt
+
+  @@index([preferredDate, status])
+  @@index([createdAt])
+}
+
+model Review {
+  id        String   @id @default(cuid())
+  name      String
+  service   String
+  rating    Int
+  review    String
+  approved  Boolean  @default(false)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([approved, createdAt])
+}
+
+model ContactInquiry {
+  id        String   @id @default(cuid())
+  name      String
+  phone     String
+  email     String?
+  subject   String
+  message   String
+  createdAt DateTime @default(now())
+}
+
+model WhatsAppEvent {
+  id        String   @id
+  eventType String
+  payload   Json?
+  createdAt DateTime @default(now())
+}
