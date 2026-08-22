@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { CalendarDays, Menu, MessageCircle, X } from "lucide-react";
@@ -44,12 +45,18 @@ export function Header() {
       <div className="container-site flex h-[84px] items-center justify-between gap-5 lg:h-[98px]">
         <Link
           href="/"
-          className="relative z-50 flex shrink-0 items-center gap-3"
+          className="relative z-50 flex shrink-0 items-center gap-2.5"
           aria-label={`${clinic.name} home`}
         >
-          <span className="grid size-11 place-items-center rounded-full bg-[#123f36] text-lg font-bold text-white">
-            FD
-          </span>
+          <Image
+            src="/images/brand/clinic-logo.png"
+            alt=""
+            width={32}
+            height={32}
+            priority
+            aria-hidden="true"
+            className="size-8 shrink-0 object-contain"
+          />
           <span className="leading-none">
             <span className="block font-serif text-[1.15rem] font-semibold tracking-[-.03em] text-[#0b2e28] sm:text-[1.28rem]">
               {clinic.name}
