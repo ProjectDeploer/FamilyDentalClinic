@@ -181,6 +181,8 @@ button {
 }
 .field {
   display: grid;
+  min-width: 0;
+  align-content: start;
   gap: 0.45rem;
 }
 .field label {
@@ -199,6 +201,10 @@ button {
   transition:
     border 0.2s,
     box-shadow 0.2s;
+}
+.field > input.input,
+.field > select.input {
+  height: 52px;
 }
 .input:focus {
   border-color: var(--emerald);
